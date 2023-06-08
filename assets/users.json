@@ -1,0 +1,65 @@
+{
+    "current_user": "dhyanendra22101",
+    "users": {
+        "dhyanendra": {
+            "name": "dhyanendra",
+            "password": "dhyanendra22101",
+            "attendance": [
+                31,
+                9,
+                17,
+                28,
+                19,
+                18,
+                25,
+                24,
+                25,
+                26,
+                31,
+                31
+            ],
+            "isadmin": true,
+            "acc": 221010218,
+            "basic": 40000
+        },
+        "user1": {
+            "name": "Dhyanendra Tripathi",
+            "password": "user123",
+            "attendance": [
+                31,
+                15,
+                17,
+                23,
+                19,
+                18,
+                25,
+                24,
+                25,
+                26,
+                31,
+                31
+            ],
+            "isadmin": false,
+            "acc": 221010211,
+            "basic": 200000
+        },
+        "user3": {
+            "name": "Arpit",
+            "password": "user123",
+            "attendance": [
+                1,
+                2,
+                3,
+                2,
+                3,
+                1,
+                1,
+                3,
+                2
+            ],
+            "isadmin": false,
+            "acc": 221010218,
+            "basic": 40000
+        }
+    }
+}

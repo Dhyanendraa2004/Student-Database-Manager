@@ -1,5 +1,3 @@
-#dhyanendra22101
-#vaious functions to act as tools in project
 import customtkinter,datetime
 import re,json,time
 from fpdf import FPDF
@@ -16,9 +14,13 @@ def update_time(time_label:customtkinter.CTkLabel):
 
 def total_attendace(data,current_user):
     a = data["users"][current_user]["attendance"]
-    
-    total_days = (datetime.date(datetime.datetime.now().year,datetime.datetime.now().month+1,1)-datetime.date(datetime.datetime.now().year,datetime.datetime.now().month,1)).days  
-    return round((a[datetime.datetime.now().month-1]/total_days)*100,1)
+    l = len(a)
+    total=0
+    for i in a:
+        total = total+i
+    #total_days = (datetime.date(datetime.datetime.now().year,datetime.datetime.now().month+1,1)-datetime.date(datetime.datetime.now().year,datetime.datetime.now().month,1)).days  
+    total_days=28*l
+    return round((total/total_days)*100,1)
 
 def samosa(location,**kwargs):
     x=kwargs["x"]

@@ -306,7 +306,6 @@ class Users:
         l_button = customtkinter.CTkButton(master=self.top_l_frame ,width=220,text="Change Password",corner_radius=6,command=lambda : self.check_entered_pass(uentry,new_password,confirm_password))
         l_button.place(relx=0.2,y=300)
         
-        
         #Check if current password is right
     def check_entered_pass(self,uentry,uentry2,uentry3):
         pass1 = uentry2.get()
@@ -368,17 +367,7 @@ class Admin(Users):
             basic = data["users"][choice]["credits"]
             student_id.configure(text=f"Student Name: {username}      Roll Number: {roll_number}")
             total_credit.configure(text=credits)
-            # calculated_da.configure(text=basic*0.38)
-            # company_allowance.configure(text=basic*0.16)
-            # perks.configure(text=basic*0.252)
-            # taxable = basic+basic*0.792
-            # total_tax = taxable*0.3
-            # itax.configure(text=total_tax)
-            # cpf.configure(text=basic*0.06)
-            # deductions.configure(text=taxable*0.3+basic*0.06)
-            # gross_pay_total = basic+basic*0.792
-            # gross_pay.configure(text=gross_pay_total)
-            # net_CGPA.configure(text=(basic+basic*0.792)-(taxable*0.3+basic*0.06))
+       
         #SELECT USER 
         select_user = customtkinter.CTkLabel(master=manage_users_frame,text="Select Student:",font=text_font)
         select_user.place(x=30,y=20)
@@ -423,12 +412,11 @@ class Admin(Users):
         student_id.place(x=0,y=90)
         student_id.configure(padx=40)
 
-        #CHANGE GRADE SCALE
-        
-        change_grade = customtkinter.CTkLabel(master=manage_users_frame,text="Change Grade Scale:",font=text_font)
-        grade_list = customtkinter.CTkOptionMenu(master=manage_users_frame,font=text_font_bold,values=["3","2","1"],width=80,command=option_callback2)
-        grade_list.place(x=30,y=170)
-        change_grade.place(x=30,y=140)
+        #CHANGE Semester 
+        semester = customtkinter.CTkOptionMenu(master=manage_users_frame,values=["1", "2", "3", "4", "5" ,"6", "7", "8"],font=self.text_font)
+        semester.place(x=30,y=170)
+        semester_label = customtkinter.CTkLabel(master=manage_users_frame,text="Semester:",font=self.text_font)
+        semester_label.place(x=30,y=140)
         
         #CHANGE BASIC PAY
         total_credits_label = customtkinter.CTkLabel(master=manage_users_frame,text="Total_credits: ",font=text_font)
@@ -440,66 +428,7 @@ class Admin(Users):
         basic = data["users"][self.username]
         total_credit = customtkinter.CTkLabel(master=manage_users_frame,text="0000",font=text_font,bg_color="#202120",corner_radius=20)
         total_credit.place(x=490,y=140)
-        #CALCULATED DA
-        # da_label = customtkinter.CTkLabel(master=manage_users_frame,text="DA:",font=text_font)
-        # da_label.place(x=30,y=215)
-        # calculated_da = customtkinter.CTkButton(master=manage_users_frame,text="0000",font=text_font,state="disabled",width=100)
-        # calculated_da.place(x=65,y=215)
-        
-        #COMPANY ALLOWANCE
-        # company_allowance_label = customtkinter.CTkLabel(master=manage_users_frame,text="CAllowance:",font=text_font)
-        # company_allowance_label.place(x=180,y=215)
-        # company_allowance = customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font)
-        # company_allowance.place(x=280,y=215)
-
-        #PERKS
-        # perks_label = customtkinter.CTkLabel(master=manage_users_frame,text="Perks:",font=text_font)
-        # perks_label.place(x=400,y=215)
-        # perks= customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font)
-        # perks.place(x=450,y=215)
-
-        #DEDUCTIONS
-        # deductions = customtkinter.CTkLabel(master=manage_users_frame,text=f"Calculated Deductions"
-        #                                     ,font=text_font,bg_color="#474545",anchor="w",width=2000,height=40)
-        # deductions.place(x=0,y=260)
-        # deductions.configure(padx=40)
-
-        #CPF
-        # cpf_label = customtkinter.CTkLabel(master=manage_users_frame,text="CPF:",font=text_font)
-        # cpf_label.place(x=30,y=310)
-        # cpf= customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font,text_color="#e3685e")
-        # cpf.place(x=70,y=310)
-
-        # #ITAX
-        # itax_label = customtkinter.CTkLabel(master=manage_users_frame,text="ITAX:",font=text_font)
-        # itax_label.place(x=170,y=310)
-        # itax= customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font,text_color="#e3685e")
-        # itax.place(x=215,y=310)
-
-        # #LIC
-        # lic_label = customtkinter.CTkLabel(master=manage_users_frame,text="LIC:",font=text_font)
-        # lic_label.place(x=290,y=310)
-        # lic= customtkinter.CTkLabel(master=manage_users_frame,text="N.A",font=font,text_color="#6ec555")
-        # lic.place(x=325,y=310)
-
-        # #TOTAL DEDUCTIONS
-        # deductions_label = customtkinter.CTkLabel(master=manage_users_frame,text="Total Deduction:",font=text_font)
-        # deductions_label.place(x=30,y=350)
-        # deductions= customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font,text_color="#e3685e")
-        # deductions.place(x=160,y=350)
-
-        # #GROSS PAY
-        # gross_pay_label = customtkinter.CTkLabel(master=manage_users_frame,text="Gross Pay:",font=text_font)
-        # gross_pay_label.place(x=290,y=350)
-        # gross_pay= customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font,text_color="#6ec555")
-        # gross_pay.place(x=380,y=350)
-
-        # #IN HAND SALARY
-        # net_CGPA_calc = customtkinter.CTkLabel(master=manage_users_frame,text=f"Net Salary"
-        #                                     ,font=text_font,bg_color="#474545",anchor="w",width=2000,height=40)
-        # net_CGPA_calc.place(x=0,y=390)
-        # net_CGPA_calc.configure(padx=40)
-        
+      
         #Total Working Days
         working_days_label = customtkinter.CTkLabel(master=manage_users_frame,text="Working Days: ",font=text_font)
         working_days_label.place(x=30,y=440)
@@ -541,10 +470,10 @@ class Admin(Users):
         pentry_label.place(x=10,y=100)
         password = customtkinter.CTkEntry(master=frame,placeholder_text="New Password",width=180,font=self.text_font)
         password.place(x=10,y=130)
-        month_of_joining = customtkinter.CTkOptionMenu(master=frame,values=["January", "February", 'March', "April", "May", 'June', "July", "August", "September", "October", 'November' , "December"],font=self.text_font)
-        month_of_joining.place(x=360,y=130)
-        month_of_joining_label = customtkinter.CTkLabel(master=frame,text="Month of Joining:",font=self.text_font)
-        month_of_joining_label.place(x=360,y=100)
+        semester = customtkinter.CTkOptionMenu(master=frame,values=["1", "2", "3", "4", "5" ,"6", "7", "8"],font=self.text_font)
+        semester.place(x=360,y=130)
+        semester_label = customtkinter.CTkLabel(master=frame,text="Semester:",font=self.text_font)
+        semester_label.place(x=360,y=100)
 
         total_credits_label = customtkinter.CTkLabel(master=frame,text="Credits obtained: ",font=self.text_font)
         total_credits = customtkinter.CTkEntry(master=frame,placeholder_text="Credits obtained: ",font=self.text_font)
@@ -567,7 +496,7 @@ class Admin(Users):
 
         f=False
         l_button = customtkinter.CTkButton(master=frame,width=220,text="Create User",corner_radius=6,command=lambda : self.check_entry(frame,password=password,username=uentry,roll=roll,credits=total_credits,
-        month=month_of_joining,name=set_name,isadmin=f),font=self.text_font)
+        semester=semester,name=set_name,isadmin=f),font=self.text_font)
         l_button.place(x=170,y=270)
 
     def check_entry(self,frame:customtkinter.CTkFrame,**kwargs:customtkinter.CTkEntry):
@@ -577,23 +506,59 @@ class Admin(Users):
         name = kwargs["name"].get()
         sem=kwargs["semester"].get()
         acc_number = kwargs["roll"].get()
-        starting_month = kwargs["month"].get()
-        create_attendance = lambda:[0 for _ in range(["January", "February", 'March', "April", "May", 'June', "July", "August", "September", "October", 'November' , "December"].index(starting_month))]
-        create_courses = lambda:[0 for _ in range(["January", "February", 'March', "April", "May", 'June', "July", "August", "September", "October", 'November' , "December"].index(starting_month))]
-        if password == "" or username == "" or name == "" or acc_number == "" or total_credits == "":
-            ...
-        elif username in data["users"].keys():
-            ...
+        creds=220
+        if sem == "1" :
+           create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]
+        elif sem == "2":
+           create_courses = lambda:[i for i in (["Calculus", "Optimisation Tech", "Quantum Mechanics","OOPs", "Signal and Systems", 'AIML', "CDS", "Wealth and well being", "IOT", "DNP", "3D Printing"])]
+           create_attendance = lambda:[0 for _ in range(len(["Calculus", "Optimisation Tech", "Quantum Mechanics","OOPs", "Signal and Systems", 'AIML', "CDS", "Wealth and well being", "IOT", "DNP", "3D Printing"]))]
+        elif sem == "3":
+           create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]
+        elif sem == "4":
+           create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]
+        elif sem == "6":
+           create_courses = lambda:[i for i in (["VLSI", "Elective2", 'Elective3',"Elective4", "Elective5"])]
+           create_attendance = lambda:[0 for _ in range(len(["VLSI", "Elective2", 'Elective3',"Elective4", "Elective5"]))]
+        elif sem == "5":
+           create_courses = lambda:[i for i in (["Microwave and antenna", "Microelectronics", 'Digital Communication',"Elective1", "Elective2"])]
+           create_attendance = lambda:[0 for _ in range(len(["Microwave and antenna", "Microelectronics", 'Digital Communication',"Elective1", "Elective2"]))]
+        elif sem == "7":
+           create_courses = lambda:[i for i in (["Elective1", "Elective2", 'Elective3',"Elective4", "Elective5"])]
+           create_attendance = lambda:[0 for _ in range(len(["Elective1", "Elective2", 'Elective3',"Elective4", "Elective5"]))]
+        elif sem == "8":
+           create_courses = lambda:[i for i in (["Major Project/ Internship"])]
+           create_attendance = lambda:[0 for _ in range(len(["Major Project/ Internship"]))]
         else:
-            data["users"][username] = {"password":password,
+           create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]        
+        data["users"][username] = {"password":password,
                                         "name":name,
                                         "roll":int(acc_number),  
                                         "semester":int(sem),
                                         "attendance":create_attendance() ,
                                         "credits":total_credits,
                                         "courses":create_courses(),
+                                        "t_credits":creds
                                         }
-            with open("users.json","w") as file:
-                json.dump(data,file,indent=4)
+        with open("users.json","w") as file:
+            json.dump(data,file,indent=4)             
+        # if password == "" or username == "" or name == "" or acc_number == "" or total_credits == "":
+        #     ...
+        # elif username in data["users"].keys():
+        #     ...
+        # else:
+        #     data["users"][username] = {"password":password,
+        #                                 "name":name,
+        #                                 "roll":int(acc_number),  
+        #                                 "semester":int(sem),
+        #                                 "attendance":create_attendance() ,
+        #                                 "credits":total_credits,
+        #                                 "courses":create_courses(),
+        #                                 }
+        #     with open("users.json","w") as file:
+        #         json.dump(data,file,indent=4)
 user = Users()
 user.login_page()

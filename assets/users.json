@@ -21,58 +21,106 @@
             "credits": "220",
             "isadmin": true,
             "roll": 221010218,
-            "basic": 220
+            "basic": 220,
+            "cgpa": 0
         },
-        "user1": {
-            "name": "Dhyanendra Tripathi",
-            "password": "user123",
-            "attendance": [
-                31,
-                15,
-                17,
-                23,
-                19,
-                18,
-                25,
-                24,
-                25,
-                26,
-                31,
-                31
-            ],
-            "credits": "220",
-            "isadmin": false,
-            "roll": 221010211,
-            "basic": 180
-        },
-        "user3": {
-            "name": "Arpit",
-            "password": "user123",
-            "attendance": [
-                1,
-                2,
-                3,
-                2,
-                3,
-                1,
-                1,
-                3,
-                2
-            ],
-            "credits": "220",
-            "isadmin": false,
+        "DoTes": {
+            "password": "1234",
+            "name": "dhyanendra",
             "roll": 221010218,
-            "basic": 40000
+            "semester": 2,
+            "attendance": [
+                20,
+                17,
+                18,
+                24,
+                20,
+                20,
+                24,
+                24,
+                24,
+                24,
+                13
+            ],
+            "credits": "200",
+            "courses": [
+                "Calculus",
+                "Optimisation Tech",
+                "Quantum Mechanics",
+                "OOPs",
+                "Signal and Systems",
+                "AIML",
+                "CDS",
+                "Wealth and well being",
+                "IOT",
+                "DNP",
+                "3D Printing"
+            ],
+            "t_credits": 220,
+            "cgpa": 9.09090909090909,
+            "isadmin": true,
+            "dec": true
         },
         "yash": {
             "password": "1234",
-            "basic": 200,
-            "name": "akash",
-            "roll": 221010219,
-            "attendance": [],
-            "isadmin":false,
-            "credits": "200",
-            "acc_history": []
+            "name": "yashu",
+            "roll": 221010218,
+            "semester": 3,
+            "attendance": [
+                22,
+                23,
+                20,
+                20,
+                23,
+                25,
+                27,
+                28,
+                28,
+                16
+            ],
+            "credits": 200,
+            "courses": [
+                "Discrete Maths",
+                "LAMA",
+                "Probability and Statistics",
+                "C Programming",
+                "DLD",
+                "Sensors and Actuators",
+                "Environmental Engg",
+                "ILC",
+                "Human Values",
+                "Python"
+            ],
+            "t_credits": 220,
+            "cgpa": 11.0,
+            "dec": true,
+            "isadmin": false
+        },
+        "baliya": {
+            "password": "12345",
+            "name": "devansh",
+            "roll": 221010225,
+            "semester": 5,
+            "attendance": [
+                18,
+                28,
+                21,
+                24,
+                23
+            ],
+            "credits": 219,
+            "courses": [
+                "Microwave and antenna",
+                "Microelectronics",
+                "Digital Communication",
+                "Elective1",
+                "Elective2"
+            ],
+            "t_credits": 220,
+            "cgpa": 10.045662100456621,
+            "dec": true,
+            "isadmin": false,
+            "result_record": []
         }
     }
 }

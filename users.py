@@ -37,8 +37,9 @@ class Users:
         frame = customtkinter.CTkToplevel(self.window)
         frame.geometry("600x440")
         frame.title("Login")
-        bg_image = ImageTk.PhotoImage(Image.open("pattern.png"))
+        bg_image = ImageTk.PhotoImage(Image.open("pattern2.png"))
         bg = customtkinter.CTkLabel(master=frame,image=bg_image,text="")
+        #pack used for organisation of the widgets
         bg.pack()
         frame.l_frame = customtkinter.CTkFrame(master=bg,height=360,width=360,corner_radius=15)
         frame.l_frame.place(relx=0.5,rely=0.5,anchor=customtkinter.CENTER)
@@ -124,11 +125,11 @@ class Users:
             self.window.home_page.place(y=295)
 
         #Added right frame 
-        self.r_frame = customtkinter.CTkFrame(master=self.window)
+        self.r_frame = customtkinter.CTkFrame(master=self.window,fg_color="#3b5998")
         self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
 
         if i==1:
-            manage = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Other Students",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.manage_user)
+            manage = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Manage Students",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.manage_user)
             manage.place(y=400)
 
         #Added dashboard label inside right frame
@@ -185,7 +186,7 @@ class Users:
         cgpa_f = customtkinter.CTkFrame(master=self.r_frame,fg_color="#e85832",corner_radius=0)
         cgpa_f.grid(row=1,column=3,sticky="new")
         
-        net_cgpa = data["users"][self.username]["cgpa"]
+        net_cgpa = round(data["users"][self.username]["cgpa"],2)
         cgpa = customtkinter.CTkLabel(master=cgpa_f,text=f"{net_cgpa}",font=self.text_font_bold)
         cgpa.place(relx=0.1,rely=0.1)
         cgpa_ = customtkinter.CTkLabel(master=cgpa_f,text="NET_CGPA",font=self.text_font)
@@ -203,7 +204,7 @@ class Users:
         result.place(x=0,y=100)
         result.configure(padx=40)
 
-        
+        net_cgpa=round(net_cgpa,2)
         if net_cgpa != 0:
            result = customtkinter.CTkLabel(details,font=self.text_font,text="Final CGPA obtained: {}".format(net_cgpa),anchor="w")
            result.place(x=0,y=140)
@@ -229,18 +230,17 @@ class Users:
         attendance_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
         y_coord = 60
         customtkinter.CTkLabel(master=attendance_graph,text=f"Course    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
-        months = ["January", "February", 'March', "April", "May", 'June', "July", "August", "September", "October", 'November' , "December"]
-        for i in range(len(data["users"][self.username]["result_record"])):
-            monthly_pay = data["users"][self.username]["result_record"][i]
-            month = months[i]
-            if monthly_pay!=None:
-                a = customtkinter.CTkLabel(master=attendance_graph,text=f"{month}   :  {monthly_pay}",font=self.text_font)
+        for i in range(len(data["users"][self.username]["courses"])):
+            l=data["users"][self.username]["courses"]
+            course_grade = data["users"][self.username]["attendance"][i]
+            course = l[i]
+            if course_grade!=None:
+                a = customtkinter.CTkLabel(master=attendance_graph,text=f"{course}   :  {course_grade}",font=self.text_font)
                 a.place(x=50,y=y_coord)
                 y_coord+=40
                 
-        cummulative = customtkinter.CTkLabel(master=attendance_graph,text=f"Month of Payment    :    Net Pay",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
+        cummulative = customtkinter.CTkLabel(master=attendance_graph,text=f"Course Name    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         
-
 
     def attendace(self):
         self.r_frame.destroy()

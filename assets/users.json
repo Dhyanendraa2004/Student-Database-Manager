@@ -1,0 +1,78 @@
+{
+    "current_user": "dhyanendra22101",
+    "users": {
+        "dhyanendra": {
+            "name": "dhyanendra",
+            "password": "dhyanendra22101",
+            "attendance": [
+                31,
+                9,
+                17,
+                28,
+                19,
+                18,
+                25,
+                24,
+                25,
+                26,
+                31,
+                31
+            ],
+            "credits": "220",
+            "isadmin": true,
+            "roll": 221010218,
+            "basic": 220
+        },
+        "user1": {
+            "name": "Dhyanendra Tripathi",
+            "password": "user123",
+            "attendance": [
+                31,
+                15,
+                17,
+                23,
+                19,
+                18,
+                25,
+                24,
+                25,
+                26,
+                31,
+                31
+            ],
+            "credits": "220",
+            "isadmin": false,
+            "roll": 221010211,
+            "basic": 180
+        },
+        "user3": {
+            "name": "Arpit",
+            "password": "user123",
+            "attendance": [
+                1,
+                2,
+                3,
+                2,
+                3,
+                1,
+                1,
+                3,
+                2
+            ],
+            "credits": "220",
+            "isadmin": false,
+            "roll": 221010218,
+            "basic": 40000
+        },
+        "yash": {
+            "password": "1234",
+            "basic": 200,
+            "name": "akash",
+            "roll": 221010219,
+            "attendance": [],
+            "isadmin":false,
+            "credits": "200",
+            "acc_history": []
+        }
+    }
+}

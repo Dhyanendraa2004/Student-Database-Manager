@@ -53,22 +53,26 @@ class Users:
         frame.mainloop()
 
     def print(self):
-
-        name = data["users"][self.username]["name"]
-        credit = data["users"][self.username]["credits"]
-        ID  = self.username
-        roll = data["users"][self.username]["roll"]
-        com_allowance = credit*0.16
-        da=credit*0.38
-        perks = credit*0.252
-        cpf = credit*0.06
-        taxable = credit+credit*0.792
-        total_tax = taxable*0.3
-        folder_selected = filedialog.askdirectory()
-        samosa(folder_selected,x=name,da=da,basic=credits,perks=perks,empID=ID,tax=total_tax,epf=cpf,acc_number = roll,com_allow = com_allowance)
+        ...
+        # name = data["users"][self.username]["name"]
+        # credit = data["users"][self.username]["credits"]
+        # ID  = self.username
+        # roll = data["users"][self.username]["roll"]
+        # com_allowance = credit*0.16
+        # da=credit*0.38
+        # perks = credit*0.252
+        # cpf = credit*0.06
+        # taxable = credit+credit*0.792
+        # total_tax = taxable*0.3
+        # folder_selected = filedialog.askdirectory()
+        # samosa(folder_selected,x=name,da=da,basic=credits,perks=perks,empID=ID,tax=total_tax,epf=cpf,acc_number = roll,com_allow = com_allowance)
 
 
     def home_page(self,i=0):
+        total_credits= data["users"][self.username]["t_credits"]
+        obtained_credits= int(data["users"][self.username]["credits"])
+        data["users"][self.username]["cgpa"] = (obtained_credits/total_credits)*10
+        net_cgpa = data["users"][self.username]["cgpa"]
         #Define window of the page
         self.window.title("Student DataBase")
         self.window.iconbitmap("iiitnrico.ico")
@@ -177,15 +181,12 @@ class Users:
         current_time_label = customtkinter.CTkLabel(master=time,text="Current Time",font=self.text_font)
         current_time_label.place(relx=0.1,rely=0.25)
 
-        # basic = int(data["users"][self.username]["basic"])
-        # taxable = basic+basic*0.792
-        # net_pay = (basic+basic*0.792)-(taxable*0.3+basic*0.06)
-        #Late Frame Right most
+        
         cgpa_f = customtkinter.CTkFrame(master=self.r_frame,fg_color="#e85832",corner_radius=0)
         cgpa_f.grid(row=1,column=3,sticky="new")
-
-        net_pay=9.29
-        cgpa = customtkinter.CTkLabel(master=cgpa_f,text=f"{net_pay}",font=self.text_font_bold)
+        
+        net_cgpa = data["users"][self.username]["cgpa"]
+        cgpa = customtkinter.CTkLabel(master=cgpa_f,text=f"{net_cgpa}",font=self.text_font_bold)
         cgpa.place(relx=0.1,rely=0.1)
         cgpa_ = customtkinter.CTkLabel(master=cgpa_f,text="NET_CGPA",font=self.text_font)
         cgpa_.place(relx=0.1,rely=0.25)
@@ -196,11 +197,23 @@ class Users:
         name_account = customtkinter.CTkLabel(details,width=2000,bg_color="#474545",text="Name: {}     Roll Number:{}".format(data["users"][self.username]["name"],data["users"][self.username]["roll"]),anchor="w",font=self.text_font)
         name_account.place(x=0,y=40)
         name_account.configure(padx=40)
+        total_credits= data["users"][self.username]["t_credits"]
+        obtained_credits= data["users"][self.username]["credits"]
+        result = customtkinter.CTkLabel(details,font=self.text_font,text="Total Credits Obtained: {}      Total Credits: {}".format(obtained_credits,total_credits),anchor="w")
+        result.place(x=0,y=100)
+        result.configure(padx=40)
+
         
+        if net_cgpa != 0:
+           result = customtkinter.CTkLabel(details,font=self.text_font,text="Final CGPA obtained: {}".format(net_cgpa),anchor="w")
+           result.place(x=0,y=140)
+           result.configure(padx=40)
+        else:
+           result = customtkinter.CTkLabel(details,font=self.text_font,text="Result Not Declared",anchor="w")
+           result.place(x=0,y=140)
+           result.configure(padx=40)
         if i==0:
             self.window.mainloop()
-
-
 
 
     def gradess(self):
@@ -217,8 +230,8 @@ class Users:
         y_coord = 60
         customtkinter.CTkLabel(master=attendance_graph,text=f"Course    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         months = ["January", "February", 'March', "April", "May", 'June', "July", "August", "September", "October", 'November' , "December"]
-        for i in range(len(data["users"][self.username]["pay_record"])):
-            monthly_pay = data["users"][self.username]["pay_record"][i]
+        for i in range(len(data["users"][self.username]["result_record"])):
+            monthly_pay = data["users"][self.username]["result_record"][i]
             month = months[i]
             if monthly_pay!=None:
                 a = customtkinter.CTkLabel(master=attendance_graph,text=f"{month}   :  {monthly_pay}",font=self.text_font)
@@ -227,8 +240,6 @@ class Users:
                 
         cummulative = customtkinter.CTkLabel(master=attendance_graph,text=f"Month of Payment    :    Net Pay",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         
-
-
 
 
     def attendace(self):
@@ -259,10 +270,15 @@ class Users:
         ax.yaxis.label.set_color('white')
         ax.tick_params(axis='y', colors='white')
         data_ = tuple(data["users"][self.username]["attendance"])
+        ll=data["users"][self.username]["courses"]
+        l=len(ll)
         ind = numpy.arange(len(data_))  # the x locations for the groups
         width = .75
-        ax.set_xticks([0,1,2,3,4,5,6,7,8,9,10,11],["January", "February", 'March', "April", "May", 'June', "July", "August", "September", "October", 'November' , "December"])
-        ax.set_xticklabels(["January", "February", 'March', "April", "May", 'June', "July", "August", "September", "October", 'November' , "December"],rotation=30)
+        num=[]
+        for i in range(l):
+          num.append(i)
+        ax.set_xticks(num,ll)
+        ax.set_xticklabels(ll,rotation=30)
         rects1 = ax.bar(ind, data_, width)
 
         canvas = FigureCanvasTkAgg(f, master=attendance_graph)
@@ -352,35 +368,30 @@ class Admin(Users):
         manage_user_label = customtkinter.CTkLabel(master=self.r_frame,text="Manage Users")
         manage_user_label.configure(padx=20,font=self.text_font_bold)
         manage_user_label.grid(row=0,column=0,padx=7.5,pady=10,sticky="nw")
-        
-        def option_callback2(choice):
-            if choice=="1":
-                total_credits_label.configure(textvariable=220)
-            elif choice=="2":
-                total_credits_label.configure(textvariable=200)
-            elif choice=="3":
-                total_credits_label.configure(textvariable=180)
 
         def option_callback(choice):
             username = data["users"][choice]["name"]
             roll_number = data["users"][choice]["roll"]
-            basic = data["users"][choice]["credits"]
+            creditss = data["users"][choice]["credits"]
             student_id.configure(text=f"Student Name: {username}      Roll Number: {roll_number}")
-            total_credit.configure(text=credits)
-       
+            total_credit.configure(text=creditss)
+
         #SELECT USER 
         select_user = customtkinter.CTkLabel(master=manage_users_frame,text="Select Student:",font=text_font)
         select_user.place(x=30,y=20)
         list_users = customtkinter.CTkOptionMenu(master=manage_users_frame,font=text_font_bold,
                                                     values=[username for username in data["users"].keys()],command=option_callback)
-
         list_users.place(x=30,y=50)
 
         def save_changes(i=0):
             studentid = list_users.get()
             if i==0:
-                new_credit = int(total_credits.get())
+                new_credit = int(change_total_credits.get())
                 data["users"][studentid]["credits"]=new_credit
+                total_credits= int(data["users"][self.username]["t_credits"])
+                data["users"][studentid]["cgpa"]=(int(total_credits)/new_credit)*10
+                data["users"][studentid]["dec"]=True
+
             else:
                 data["users"].pop(studentid)
             with open("users.json","w") as file:
@@ -417,30 +428,17 @@ class Admin(Users):
         semester.place(x=30,y=170)
         semester_label = customtkinter.CTkLabel(master=manage_users_frame,text="Semester:",font=self.text_font)
         semester_label.place(x=30,y=140)
+
         
-        #CHANGE BASIC PAY
-        total_credits_label = customtkinter.CTkLabel(master=manage_users_frame,text="Total_credits: ",font=text_font)
-        total_credits = customtkinter.CTkEntry(master=manage_users_frame,font=text_font,placeholder_text="Total Credits Obtained: ",width=120)
-        total_credits_label.place(x=225,y=140)
-        total_credits.place(x=230,y=170)
+        #CHANGE Credits obtained
+        change_total_credits_label = customtkinter.CTkLabel(master=manage_users_frame,text="Total_credits: ",font=text_font)
+        change_total_credits = customtkinter.CTkEntry(master=manage_users_frame,font=text_font,placeholder_text="Total Credits Obtained: ",width=120)
+        change_total_credits_label.place(x=225,y=140)
+        change_total_credits.place(x=230,y=170)
         total_credit_label = customtkinter.CTkLabel(master=manage_users_frame,text="Current Credits:",font=text_font)
         total_credit_label.place(x=350,y=140)
-        basic = data["users"][self.username]
         total_credit = customtkinter.CTkLabel(master=manage_users_frame,text="0000",font=text_font,bg_color="#202120",corner_radius=20)
-        total_credit.place(x=490,y=140)
-      
-        #Total Working Days
-        working_days_label = customtkinter.CTkLabel(master=manage_users_frame,text="Working Days: ",font=text_font)
-        working_days_label.place(x=30,y=440)
-        working_days= customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font)
-        working_days.place(x=145,y=440)
-
-       
-        #NET SALARY
-        net_CGPA_label = customtkinter.CTkLabel(master=manage_users_frame,text="Final CGPA:",font=text_font)
-        net_CGPA_label.place(x=190,y=440)
-        net_CGPA= customtkinter.CTkLabel(master=manage_users_frame,text="0",font=font)
-        net_CGPA.place(x=280,y=440)
+        total_credit.place(x=460,y=140)
 
         save_button = customtkinter.CTkButton(master=manage_users_frame,text="Save Changes",font=font,fg_color="#4b873a",command=lambda : confirmation_window())
         save_button.place(x=440,y=440)
@@ -495,7 +493,8 @@ class Admin(Users):
         acc_number.place(relx=20,y=180)
 
         f=False
-        l_button = customtkinter.CTkButton(master=frame,width=220,text="Create User",corner_radius=6,command=lambda : self.check_entry(frame,password=password,username=uentry,roll=roll,credits=total_credits,
+        dec=False
+        l_button = customtkinter.CTkButton(master=frame,width=220,text="Create User",corner_radius=6,command=lambda : self.check_entry(frame,password=password,dec=dec,username=uentry,roll=roll,credits=total_credits,
         semester=semester,name=set_name,isadmin=f),font=self.text_font)
         l_button.place(x=170,y=270)
 
@@ -507,6 +506,12 @@ class Admin(Users):
         sem=kwargs["semester"].get()
         acc_number = kwargs["roll"].get()
         creds=220
+        cgpa=(int(total_credits)/creds)*10
+        if(int(total_credits)!=0):
+            result_declared=True
+        else:
+            result_declared=False
+            cgpa=0
         if sem == "1" :
            create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
            create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]
@@ -533,32 +538,37 @@ class Admin(Users):
            create_attendance = lambda:[0 for _ in range(len(["Major Project/ Internship"]))]
         else:
            create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
-           create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]        
-        data["users"][username] = {"password":password,
+           create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]       
+        if result_declared:    
+         data["users"][username] = {"password":password,
                                         "name":name,
                                         "roll":int(acc_number),  
                                         "semester":int(sem),
                                         "attendance":create_attendance() ,
                                         "credits":total_credits,
                                         "courses":create_courses(),
-                                        "t_credits":creds
+                                        "t_credits":creds,
+                                        "cgpa":cgpa,
+                                        "dec":True,
+                                        "isadmin":False,
+                                        "result_record":[]
                                         }
+        else:
+            data["users"][username] = {"password":password,
+                                        "name":name,
+                                        "roll":int(acc_number),  
+                                        "semester":int(sem),
+                                        "attendance":create_attendance() ,
+                                        "credits":total_credits,
+                                        "courses":create_courses(),
+                                        "t_credits":creds,
+                                        "cgpa":cgpa,
+                                        "dec":False,
+                                        "isadmin":False,
+                                        "result_record":[]
+                                        }
+
         with open("users.json","w") as file:
             json.dump(data,file,indent=4)             
-        # if password == "" or username == "" or name == "" or acc_number == "" or total_credits == "":
-        #     ...
-        # elif username in data["users"].keys():
-        #     ...
-        # else:
-        #     data["users"][username] = {"password":password,
-        #                                 "name":name,
-        #                                 "roll":int(acc_number),  
-        #                                 "semester":int(sem),
-        #                                 "attendance":create_attendance() ,
-        #                                 "credits":total_credits,
-        #                                 "courses":create_courses(),
-        #                                 }
-        #     with open("users.json","w") as file:
-        #         json.dump(data,file,indent=4)
 user = Users()
 user.login_page()

@@ -14,5 +14,5 @@ Project under Dr. Santosh Kumar of the course Object Oriented Programming.
 
 ## To build just install the requirements.txt file using pip
 ```bash
-pip install -r requirements. txt 
+pip install -r requirements.txt 
 ```

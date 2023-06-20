@@ -54,19 +54,14 @@ class Users:
         frame.mainloop()
 
     def print(self):
-        ...
-        # name = data["users"][self.username]["name"]
-        # credit = data["users"][self.username]["credits"]
-        # ID  = self.username
-        # roll = data["users"][self.username]["roll"]
-        # com_allowance = credit*0.16
-        # da=credit*0.38
-        # perks = credit*0.252
-        # cpf = credit*0.06
-        # taxable = credit+credit*0.792
-        # total_tax = taxable*0.3
-        # folder_selected = filedialog.askdirectory()
-        # samosa(folder_selected,x=name,da=da,basic=credits,perks=perks,empID=ID,tax=total_tax,epf=cpf,acc_number = roll,com_allow = com_allowance)
+        name = data["users"][self.username]["name"]
+        credit = data["users"][self.username]["credits"]
+        uID  = self.username
+        roll = data["users"][self.username]["roll"]
+        t_Cre=data["users"][self.username]["t_credits"]
+        ccggppaa =round(data["users"][self.username]["cgpa"],2)
+        folder_selected = filedialog.askdirectory()
+        make_pdf(folder_selected,data,self.username,x=name,basic=credit,tax=t_Cre,perks=ccggppaa,empID=uID,acc_number = roll)
 
 
     def home_page(self,i=0):
@@ -316,7 +311,7 @@ class Users:
         #UI Element
         self.top_level = customtkinter.CTkToplevel()
         self.top_level.title("Change Password")
-        image = ImageTk.PhotoImage(Image.open("alo.png"))
+        image = ImageTk.PhotoImage(Image.open("iiitnrico.ico"))
         bg = customtkinter.CTkLabel(master=self.top_level,image=image,text="")
         bg.pack()
         self.top_level.geometry("600x440") 

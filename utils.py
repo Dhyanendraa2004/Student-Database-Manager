@@ -22,22 +22,17 @@ def total_attendace(data,current_user):
     total_days=28*l
     return round((total/total_days)*100,1)
 
-def samosa(location,**kwargs):
+def make_pdf(location,data,current_user,**kwargs):
     x=kwargs["x"]
     basic=kwargs["basic"]
-    da=kwargs["da"]
-    com_allow = kwargs["com_allow"]
     perks = kwargs["perks"]
     empID = kwargs["empID"]
     tax = kwargs["tax"]
-    epf = kwargs["epf"]
-    lic = "N.A"
     acc_number = kwargs["acc_number"]
-    gross=basic+da+com_allow+perks
-    total_deduction=epf+tax
-
-
-
+    gr=data["users"][current_user]["grades"]
+    courses=data["users"][current_user]["courses"]
+    gradelist=lambda:[[f"Subject: {i}",f"Grade: {gr[i]}"] for i in (courses)]
+    kk=gradelist()
     def create_table(table_data, title='', data_size = 10, title_size=12, align_data='L', align_header='L', cell_width='even', x_start='x_default',emphasize_data=[], emphasize_style=None, emphasize_color=(0,0,0)):
 
         default_style = pdf.font_style
@@ -177,24 +172,21 @@ def samosa(location,**kwargs):
 
 
     data = [
-        [f"EMPLOYEE ID : {empID}",f"ACCOUNT NUMBER:{acc_number}"], 
-        [f"Basic : {basic}", f"Tax : {tax}",],
-        [f"DA : {da}", f"EPF : {epf}", ],
-        [f"Company Allowance : {com_allow}", f"LIC : {lic}",],
-        [f"Perks : {perks}"]
+        [f"Student ID : {empID}",f"ROLL NUMBER:{acc_number}"], 
+        [f"Credits Obtained : {basic}", f"Total Credits : {tax}",],
+        [f"CGPA Obtained : {perks}"]
         ]
-
-
-
-    pdf = FPDF(format=(200,100))
+    for i in range(0,len(kk)):
+        data.append(kk[i])
+    pdf = FPDF(format=(200,500))
     pdf.add_page()
     pdf.set_font("Times", size=10)
 
     create_table(table_data = data,title='PAYSLIP      NAME: {}'.format(x), cell_width='even')
     pdf.ln()
 
-    pdf.cell(94, 0, f'GROSS PAY :   {gross}',)
-    pdf.cell(0,0,f"TOTAL DEDUCTION :   {total_deduction}")
-    pdf.ln(7)
-    pdf.cell(0,0,f"NET PAY : {gross-total_deduction}")
-    pdf.output(rf"{location}/Payslip.pdf")
+    # pdf.cell(94, 0, f'GROSS PAY :   {gross}',)
+    # pdf.cell(0,0,f"TOTAL DEDUCTION :   {total_deduction}")
+    # pdf.ln(7)
+    # pdf.cell(0,0,f"NET PAY : {gross-total_deduction}")
+    pdf.output(rf"{location}/Student_Report.pdf")

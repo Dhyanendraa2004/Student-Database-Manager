@@ -223,6 +223,61 @@
                 "DNP": "B",
                 "3D Printing": "A+"
             }
+        },
+        "projects": {
+            "password": "12345",
+            "name": "projects database",
+            "roll": 221010000,
+            "semester": 1,
+            "attendance": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "credits": "0",
+            "courses": [
+                "Discrete Maths",
+                "LAMA",
+                "Probability and Statistics",
+                "C Programming",
+                "DLD",
+                "Sensors and Actuators",
+                "Environmental Engg",
+                "ILC",
+                "Human Values",
+                "Python"
+            ],
+            "t_credits": 220,
+            "cgpa": 0,
+            "dec": false,
+            "isadmin": false,
+            "result_record": [],
+            "grades": {
+                "Discrete Maths": "",
+                "LAMA": "",
+                "Probability and Statistics": "",
+                "C Programming": "",
+                "DLD": "",
+                "Sensors and Actuators": "",
+                "Environmental Engg": "",
+                "ILC": "",
+                "Human Values": "",
+                "Python": ""
+            },
+            "projects":["Student DataBase Manager by Dhyanendra",
+        "Stock Price Manager by Dhyanendra","Pernsonal Assistant for IOT based Home Automation"],
+            "projectsid":{
+                "Student DataBase Manager by Dhyanendra":"https://github.com/Dhyanendraa2004/Student-Database-Manager",
+                "Stock Price Manager by Dhyanendra":"https://github.com/Dhyanendraa2004/Stock-Price-Prediction-DL_Model",
+                "Pernsonal Assistant for IOT based Home Automation":"https://github.com/Dhyanendraa2004/Personal-Assistant-for-IOT-based-Home-Automation"
+            }
         }
     }
 }

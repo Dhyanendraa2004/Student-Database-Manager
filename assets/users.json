@@ -121,6 +121,108 @@
             "dec": true,
             "isadmin": false,
             "result_record": []
+        },
+        "arpit": {
+            "password": "1234",
+            "name": "arpit kumar",
+            "roll": 221010211,
+            "semester": 2,
+            "attendance": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "credits": 220,
+            "courses": [
+                "Calculus",
+                "Optimisation Tech",
+                "Quantum Mechanics",
+                "OOPs",
+                "Signal and Systems",
+                "AIML",
+                "CDS",
+                "Wealth and well being",
+                "IOT",
+                "DNP",
+                "3D Printing"
+            ],
+            "t_credits": 220,
+            "cgpa": 10.0,
+            "dec": true,
+            "isadmin": false,
+            "result_record": [],
+            "grades": {
+                "Calculus": "",
+                "Optimisation Tech": "",
+                "Quantum Mechanics": "",
+                "OOPs": "",
+                "Signal and Systems": "",
+                "AIML": "",
+                "CDS": "",
+                "Wealth and well being": "",
+                "IOT": "",
+                "DNP": "",
+                "3D Printing": ""
+            }
+        },
+        "adarsh": {
+            "password": "12345",
+            "name": "adarsh",
+            "roll": 221010201,
+            "semester": 2,
+            "attendance": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "credits": "210",
+            "courses": [
+                "Calculus",
+                "Optimisation Tech",
+                "Quantum Mechanics",
+                "OOPs",
+                "Signal and Systems",
+                "AIML",
+                "CDS",
+                "Wealth and well being",
+                "IOT",
+                "DNP",
+                "3D Printing"
+            ],
+            "t_credits": 220,
+            "cgpa": 9.545454545454547,
+            "dec": true,
+            "isadmin": false,
+            "result_record": [],
+            "grades": {
+                "Calculus": "A",
+                "Optimisation Tech": "A",
+                "Quantum Mechanics": "B",
+                "OOPs": "A",
+                "Signal and Systems": "B",
+                "AIML": "A",
+                "CDS": "A",
+                "Wealth and well being": "B",
+                "IOT": "A+",
+                "DNP": "B",
+                "3D Printing": "A+"
+            }
         }
     }
 }

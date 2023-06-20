@@ -37,14 +37,14 @@ class Users:
         frame = customtkinter.CTkToplevel(self.window)
         frame.geometry("600x440")
         frame.title("Login")
-        bg_image = ImageTk.PhotoImage(Image.open("pattern2.png"))
+        bg_image = ImageTk.PhotoImage(Image.open("pattern.png"))
         bg = customtkinter.CTkLabel(master=frame,image=bg_image,text="")
         #pack used for organisation of the widgets
         bg.pack()
-        frame.l_frame = customtkinter.CTkFrame(master=bg,height=360,width=360,corner_radius=15)
+        frame.l_frame = customtkinter.CTkFrame(master=bg,height=360,width=360,corner_radius=15,fg_color="#1a2d54")
         frame.l_frame.place(relx=0.5,rely=0.5,anchor=customtkinter.CENTER)
-        frame.label_1 = customtkinter.CTkLabel(master=frame.l_frame,text="Student Database Manager \nOOPs Project",font=("Century Gothic",20))
-        frame.label_1.place(x=60,y=10)
+        frame.label_1 = customtkinter.CTkLabel(master=frame.l_frame,text="Student Database Management \nSystem",font=("Century Gothic",20))
+        frame.label_1.place(x=20,y=10)
         frame.uentry = customtkinter.CTkEntry(master=frame.l_frame,placeholder_text="Username",width=220)
         frame.uentry.place(relx=0.2,y=125)
         frame.pentry = customtkinter.CTkEntry(master=frame.l_frame,placeholder_text="Password",width=220)
@@ -82,7 +82,7 @@ class Users:
         self.window.grid_rowconfigure(0,weight=1)
 
         #Add left frame inside the row 0 col 0 cell
-        self.l_frame = customtkinter.CTkFrame(master=self.window)
+        self.l_frame = customtkinter.CTkFrame(master=self.window,fg_color="#1a2d54")
         self.l_frame.grid(row=0,column=0,rowspan=4,padx=20,pady=20,sticky="nsew")
 
         #Added MANAGE label
@@ -90,17 +90,17 @@ class Users:
         self.window.manage_.place(y=30,relx=0.1)
 
         #Added ATTENDANCE button
-        self.window.but_attend = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Attendance",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",image=customtkinter.CTkImage(Image.open("calendar-solid.png")),command=self.attendace)
+        self.window.but_attend = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Attendance",corner_radius=0,fg_color="#22448a",hover_color="#2e2e2e",image=customtkinter.CTkImage(Image.open("calendar-solid.png")),command=self.attendace)
         self.window.but_attend.place(y=60)
 
         #Added Student button 
-        self.window.but_emp = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Change Password",corner_radius=0,image=customtkinter.CTkImage(Image.open("a.png"),size=(20,20)),fg_color="#333333",hover_color="#2e2e2e",
+        self.window.but_emp = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Change Password",corner_radius=0,image=customtkinter.CTkImage(Image.open("a.png"),size=(20,20)),fg_color="#22448a",hover_color="#2e2e2e",
                               command= self.change_password
                                 )
         self.window.but_emp.place(y=100)
 
         #Added DEDUCTION button
-        self.window.but_deduction = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Grades",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",image=customtkinter.CTkImage(Image.open("documents-solid.png")),command=self.gradess)
+        self.window.but_deduction = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Grades",corner_radius=0,fg_color="#22448a",hover_color="#2e2e2e",image=customtkinter.CTkImage(Image.open("documents-solid.png")),command=self.gradess)
         self.window.but_deduction.place(y=140)
 
         #Added Printables label
@@ -108,27 +108,27 @@ class Users:
         self.window.printables.place(y=185,relx=0.1)
 
         #Added sheet button
-        self.window.but_sheet = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Attendence Sheet   ",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",image=customtkinter.CTkImage(Image.open("coins-solid.png")),command=self.print)
+        self.window.but_sheet = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Student Report",corner_radius=0,fg_color="#22448a",hover_color="#2e2e2e",image=customtkinter.CTkImage(Image.open("coins-solid.png")),command=self.print)
         self.window.but_sheet.place(y=215)
 
         #Added Home page button
         if i==0:
-            self.window.home_page = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Home Page",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.home_page)
+            self.window.home_page = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Home Page",corner_radius=0,fg_color="#22448a",hover_color="#2e2e2e",command=self.home_page)
             self.window.home_page.place(y=295)
         else:
-            self.window.home_page = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Home Page",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=lambda : self.home_page(1))
+            self.window.home_page = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Home Page",corner_radius=0,fg_color="#22448a",hover_color="#2e2e2e",command=lambda : self.home_page(1))
             self.window.home_page.place(y=295)
 
         #Added right frame 
-        self.r_frame = customtkinter.CTkFrame(master=self.window,fg_color="#3b5998")
-        self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
+        self.r_frame = customtkinter.CTkFrame(master=self.window,fg_color="#1a2d54")
+        self.r_frame.grid(row=0,column=1,rowspan=3,padx=20,pady=20,sticky="nsew")
 
         if i==1:
-            manage = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Manage Students",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.manage_user)
+            manage = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Manage Students",corner_radius=0,fg_color="#22448a",hover_color="#2e2e2e",command=self.manage_user)
             manage.place(y=400)
 
         #Added Project Button
-        projects = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Projects",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.projectsss)
+        projects = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Projects",corner_radius=0,fg_color="#22448a",hover_color="#2e2e2e",command=self.projectsss)
         projects.place(y=495)
 
         #Added dashboard label inside right frame
@@ -143,25 +143,24 @@ class Users:
         self.dashboard.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
 
         #Add total_working_employee frame
-        total_student = customtkinter.CTkFrame(master=self.r_frame,fg_color="#6c7f91",corner_radius=0)
+        total_student = customtkinter.CTkFrame(master=self.r_frame,fg_color="#22448a",corner_radius=0)
         total_student.grid(row=1,column=0,sticky="new",padx=20)
 
         #Details
-        total_student_ = customtkinter.CTkLabel(master=total_student,text="Total Students",font=self.text_font)
-        total_student_.place(relx=0.1,rely=0.25)
         users = len(data["users"])
-        total_student_label = customtkinter.CTkLabel(master=total_student,text=f"{users}",font=self.text_font_bold)
-        total_student_label.place(relx=0.1,rely=0.1)
-        
+        total_student_ = customtkinter.CTkLabel(master=total_student,text=f"Total Users: {users}",font=self.text_font)
+        total_student_.place(relx=0.1,rely=0.75)
+    
         #total credits show
-        total_cre_ = customtkinter.CTkLabel(master=total_student,text="Total Credits: ",font=self.text_font)
-        total_cre_.place(relx=0.1,rely=0.25)
         cre = data["users"][self.username]["credits"]
+        total_cre_ = customtkinter.CTkLabel(master=total_student,text=f"Total Credits: {cre}",font=self.text_font)
+        total_cre_.place(relx=0.1,rely=0.25)
+        
         total_cre_label = customtkinter.CTkLabel(master=total_student,text=f"{cre}",font=self.text_font_bold)
         total_cre_label.place(relx=0.1,rely=0.1)
 
         #Add attendance percentage frame 
-        percentage = customtkinter.CTkFrame(master=self.r_frame,fg_color="#019258",corner_radius=0)
+        percentage = customtkinter.CTkFrame(master=self.r_frame,fg_color="#22448a",corner_radius=0)
         percentage.grid(row=1,column=1,sticky="new")
 
         #Details
@@ -171,7 +170,7 @@ class Users:
         percentage_label_.place(relx=0.1,rely=0.25)
 
         #Add current time frame
-        time = customtkinter.CTkFrame(master=self.r_frame,fg_color="#fd9c0a",corner_radius=0)
+        time = customtkinter.CTkFrame(master=self.r_frame,fg_color="#22448a",corner_radius=0)
         time.grid(row=1,column=2,sticky="new",padx=20)
 
         #Details
@@ -182,7 +181,7 @@ class Users:
         current_time_label.place(relx=0.1,rely=0.25)
 
         
-        cgpa_f = customtkinter.CTkFrame(master=self.r_frame,fg_color="#e85832",corner_radius=0)
+        cgpa_f = customtkinter.CTkFrame(master=self.r_frame,fg_color="#22448a",corner_radius=0)
         cgpa_f.grid(row=1,column=3,sticky="new")
         
         net_cgpa = round(data["users"][self.username]["cgpa"],2)
@@ -217,14 +216,14 @@ class Users:
 
     def gradess(self):
         self.r_frame.destroy()
-        self.r_frame = customtkinter.CTkFrame(master=self.window)
+        self.r_frame = customtkinter.CTkFrame(master=self.window,fg_color="#1a2d54")
         self.r_frame.grid_columnconfigure((0,1,2,3),weight=1)
         self.r_frame.grid_rowconfigure(1,weight=1)
         self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
         grad = customtkinter.CTkLabel(master=self.r_frame,text="Grades")
         grad.configure(padx=20,font=self.text_font_bold)
         grad.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
-        grad_graph = customtkinter.CTkFrame(master=self.r_frame)
+        grad_graph = customtkinter.CTkFrame(master=self.r_frame,fg_color="#22448a")
         grad_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
         y_coord = 60
         customtkinter.CTkLabel(master=grad_graph,text=f"Course\t:Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
@@ -233,7 +232,7 @@ class Users:
             course = l[i]
             course_grade = data["users"][self.username]["grades"][course]
             if course_grade!=None:
-                a = customtkinter.CTkLabel(master=grad_graph,text=f"{course}\t:{course_grade}",font=self.text_font)
+                a = customtkinter.CTkLabel(master=grad_graph,text=f"{course} \t :{course_grade}",font=self.text_font)
                 a.place(x=50,y=y_coord)
                 y_coord+=40
                 
@@ -242,11 +241,11 @@ class Users:
     #projects tab
     def projectsss(self):
         self.r_frame.destroy()
-        self.r_frame = customtkinter.CTkFrame(master=self.window)
+        self.r_frame = customtkinter.CTkFrame(master=self.window,fg_color="#1a2d54")
         self.r_frame.grid_columnconfigure((0,1,2,3),weight=1)
         self.r_frame.grid_rowconfigure(1,weight=1)
         self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
-        projct = customtkinter.CTkLabel(master=self.r_frame,text="Project Database")
+        projct = customtkinter.CTkLabel(master=self.r_frame,text="Project Database",fg_color="#22448a")
         projct.configure(padx=20,font=self.text_font_bold)
         projct.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
         projct_graph = customtkinter.CTkFrame(master=self.r_frame)
@@ -267,7 +266,7 @@ class Users:
         self.r_frame.destroy()
         #Create a new window with the same name
         
-        self.r_frame = customtkinter.CTkFrame(master=self.window)
+        self.r_frame = customtkinter.CTkFrame(master=self.window,fg_color="#1a2d54")
         self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
 
         self.r_frame.grid_columnconfigure((0,1,2,3),weight=1)
@@ -309,14 +308,11 @@ class Users:
 
     def change_password(self):
         #UI Element
-        self.top_level = customtkinter.CTkToplevel()
+        self.top_level = customtkinter.CTkToplevel(fg_color="#1a2d54")
         self.top_level.title("Change Password")
-        image = ImageTk.PhotoImage(Image.open("iiitnrico.ico"))
-        bg = customtkinter.CTkLabel(master=self.top_level,image=image,text="")
-        bg.pack()
         self.top_level.geometry("600x440") 
 
-        self.top_l_frame = customtkinter.CTkFrame(master=self.top_level,height=360,width=360,corner_radius=15)
+        self.top_l_frame = customtkinter.CTkFrame(master=self.top_level,height=360,width=360,corner_radius=15,fg_color="#22448a")
         self.top_l_frame .place(relx=0.5,rely=0.5,anchor=customtkinter.CENTER)
 
         label_1 = customtkinter.CTkLabel(master=self.top_l_frame ,text="Change Password",font=("Century Gothic",20))
@@ -376,11 +372,11 @@ class Admin(Users):
         text_font_bold = customtkinter.CTkFont("Proxima Nova Rg",20,"bold")
 
         self.home_page(1)
-        manage = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Other_Students",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.manage_user)
+        manage = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Other_Students",corner_radius=0,fg_color="#1a2d54",hover_color="#2e2e2e",command=self.manage_user)
         manage.place(y=400)
         self.window.home_page.configure(text="Home Page", command = lambda: self.home_page(1))
         self.r_frame.destroy()
-        self.r_frame = customtkinter.CTkFrame(master=self.window)
+        self.r_frame = customtkinter.CTkFrame(master=self.window,fg_color="#22448a")
         self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
         self.r_frame.grid_columnconfigure((0,1,2,3),weight=1)
         self.r_frame.grid_rowconfigure(1,weight=1)
@@ -459,7 +455,7 @@ class Admin(Users):
         total_credit_label = customtkinter.CTkLabel(master=manage_users_frame,text="Current Credits:",font=text_font)
         total_credit_label.place(x=350,y=140)
         total_credit = customtkinter.CTkLabel(master=manage_users_frame,text="0000",font=text_font,bg_color="#202120",corner_radius=20)
-        total_credit.place(x=460,y=140)
+        total_credit.place(x=480,y=140)
 
         save_button = customtkinter.CTkButton(master=manage_users_frame,text="Save Changes",font=font,fg_color="#4b873a",command=lambda : confirmation_window())
         save_button.place(x=440,y=440)

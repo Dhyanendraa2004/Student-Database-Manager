@@ -132,6 +132,10 @@ class Users:
             manage = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Manage Students",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.manage_user)
             manage.place(y=400)
 
+        #Added Project Button
+        projects = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Projects",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.home_page)
+        projects.place(y=495)
+
         #Added dashboard label inside right frame
         self.dashboard = customtkinter.CTkLabel(master=self.r_frame,text="Dashboard")
         self.dashboard.configure(padx=20,font=self.text_font_bold)
@@ -216,7 +220,6 @@ class Users:
         if i==0:
             self.window.mainloop()
 
-
     def gradess(self):
         self.r_frame.destroy()
         self.r_frame = customtkinter.CTkFrame(master=self.window)
@@ -229,18 +232,42 @@ class Users:
         attendance_graph = customtkinter.CTkFrame(master=self.r_frame)
         attendance_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
         y_coord = 60
-        customtkinter.CTkLabel(master=attendance_graph,text=f"Course    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
+        customtkinter.CTkLabel(master=attendance_graph,text=f"Course\t:Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         for i in range(len(data["users"][self.username]["courses"])):
             l=data["users"][self.username]["courses"]
-            course_grade = data["users"][self.username]["attendance"][i]
             course = l[i]
+            course_grade = data["users"][self.username]["grades"][course]
             if course_grade!=None:
-                a = customtkinter.CTkLabel(master=attendance_graph,text=f"{course}   :  {course_grade}",font=self.text_font)
+                a = customtkinter.CTkLabel(master=attendance_graph,text=f"{course}\t:{course_grade}",font=self.text_font)
                 a.place(x=50,y=y_coord)
                 y_coord+=40
                 
         cummulative = customtkinter.CTkLabel(master=attendance_graph,text=f"Course Name    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         
+    #projects tab
+    def projectsss(self):
+        self.r_frame.destroy()
+        self.r_frame = customtkinter.CTkFrame(master=self.window)
+        self.r_frame.grid_columnconfigure((0,1,2,3),weight=1)
+        self.r_frame.grid_rowconfigure(1,weight=1)
+        self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
+        attendance = customtkinter.CTkLabel(master=self.r_frame,text="Project Database")
+        attendance.configure(padx=20,font=self.text_font_bold)
+        attendance.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
+        attendance_graph = customtkinter.CTkFrame(master=self.r_frame)
+        attendance_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
+        y_coord = 60
+        customtkinter.CTkLabel(master=attendance_graph,text=f"Course\t:Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
+        for i in range(len(data["users"][self.username]["courses"])):
+            l=data["users"][self.username]["courses"]
+            course = l[i]
+            course_grade = data["users"][self.username]["grades"][course]
+            if course_grade!=None:
+                a = customtkinter.CTkLabel(master=attendance_graph,text=f"{course}\t:{course_grade}",font=self.text_font)
+                a.place(x=50,y=y_coord)
+                y_coord+=40
+                
+        cummulative = customtkinter.CTkLabel(master=attendance_graph,text=f"Course Name    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
 
     def attendace(self):
         self.r_frame.destroy()
@@ -514,31 +541,50 @@ class Admin(Users):
             cgpa=0
         if sem == "1" :
            create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]
+           create_gradelist=lambda:{k[i]:"" for i in range(10)}       
         elif sem == "2":
            create_courses = lambda:[i for i in (["Calculus", "Optimisation Tech", "Quantum Mechanics","OOPs", "Signal and Systems", 'AIML', "CDS", "Wealth and well being", "IOT", "DNP", "3D Printing"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Calculus", "Optimisation Tech", "Quantum Mechanics","OOPs", "Signal and Systems", 'AIML', "CDS", "Wealth and well being", "IOT", "DNP", "3D Printing"]))]
+           create_gradelist=lambda:{k[i]:"" for i in range(11)}          
         elif sem == "3":
            create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]
+           create_gradelist=lambda:{k[i]:"" for i in range(10)}        
         elif sem == "4":
            create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]
+           create_gradelist=lambda:{k[i]:"" for i in range(10)} 
         elif sem == "6":
            create_courses = lambda:[i for i in (["VLSI", "Elective2", 'Elective3',"Elective4", "Elective5"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["VLSI", "Elective2", 'Elective3',"Elective4", "Elective5"]))]
+           create_gradelist=lambda:{k[i]:"" for i in range(5)} 
         elif sem == "5":
            create_courses = lambda:[i for i in (["Microwave and antenna", "Microelectronics", 'Digital Communication',"Elective1", "Elective2"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Microwave and antenna", "Microelectronics", 'Digital Communication',"Elective1", "Elective2"]))]
+           create_gradelist=lambda:{k[i]:"" for i in range(5)} 
         elif sem == "7":
            create_courses = lambda:[i for i in (["Elective1", "Elective2", 'Elective3',"Elective4", "Elective5"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Elective1", "Elective2", 'Elective3',"Elective4", "Elective5"]))]
+           create_gradelist= lambda:{k[i]:"" for i in range(5)} 
         elif sem == "8":
            create_courses = lambda:[i for i in (["Major Project/ Internship"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Major Project/ Internship"]))]
+           create_gradelist=lambda:{k[i]:"" for i in range(1)} 
         else:
            create_courses = lambda:[i for i in (["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"])]
+           k=create_courses()
            create_attendance = lambda:[0 for _ in range(len(["Discrete Maths", "LAMA", 'Probability and Statistics',"C Programming", "DLD", 'Sensors and Actuators', "Environmental Engg", "ILC", "Human Values", "Python"]))]       
+           create_gradelist=lambda:{k[i]:"" for i in range(10)}         
+        
         if result_declared:    
          data["users"][username] = {"password":password,
                                         "name":name,
@@ -551,7 +597,8 @@ class Admin(Users):
                                         "cgpa":cgpa,
                                         "dec":True,
                                         "isadmin":False,
-                                        "result_record":[]
+                                        "result_record":[],
+                                        "grades":create_gradelist()
                                         }
         else:
             data["users"][username] = {"password":password,
@@ -565,7 +612,8 @@ class Admin(Users):
                                         "cgpa":cgpa,
                                         "dec":False,
                                         "isadmin":False,
-                                        "result_record":[]
+                                        "result_record":[],
+                                        "grades":create_gradelist()
                                         }
 
         with open("users.json","w") as file:

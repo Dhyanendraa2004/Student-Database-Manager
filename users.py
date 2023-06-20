@@ -133,7 +133,7 @@ class Users:
             manage.place(y=400)
 
         #Added Project Button
-        projects = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Projects",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.home_page)
+        projects = customtkinter.CTkButton(master=self.l_frame,width=220,height=40,text="Projects",corner_radius=0,fg_color="#333333",hover_color="#2e2e2e",command=self.projectsss)
         projects.place(y=495)
 
         #Added dashboard label inside right frame
@@ -226,23 +226,23 @@ class Users:
         self.r_frame.grid_columnconfigure((0,1,2,3),weight=1)
         self.r_frame.grid_rowconfigure(1,weight=1)
         self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
-        attendance = customtkinter.CTkLabel(master=self.r_frame,text="Grades")
-        attendance.configure(padx=20,font=self.text_font_bold)
-        attendance.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
-        attendance_graph = customtkinter.CTkFrame(master=self.r_frame)
-        attendance_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
+        grad = customtkinter.CTkLabel(master=self.r_frame,text="Grades")
+        grad.configure(padx=20,font=self.text_font_bold)
+        grad.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
+        grad_graph = customtkinter.CTkFrame(master=self.r_frame)
+        grad_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
         y_coord = 60
-        customtkinter.CTkLabel(master=attendance_graph,text=f"Course\t:Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
+        customtkinter.CTkLabel(master=grad_graph,text=f"Course\t:Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         for i in range(len(data["users"][self.username]["courses"])):
             l=data["users"][self.username]["courses"]
             course = l[i]
             course_grade = data["users"][self.username]["grades"][course]
             if course_grade!=None:
-                a = customtkinter.CTkLabel(master=attendance_graph,text=f"{course}\t:{course_grade}",font=self.text_font)
+                a = customtkinter.CTkLabel(master=grad_graph,text=f"{course}\t:{course_grade}",font=self.text_font)
                 a.place(x=50,y=y_coord)
                 y_coord+=40
                 
-        cummulative = customtkinter.CTkLabel(master=attendance_graph,text=f"Course Name    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
+        cummulative = customtkinter.CTkLabel(master=grad_graph,text=f"Course Name    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         
     #projects tab
     def projectsss(self):
@@ -251,23 +251,22 @@ class Users:
         self.r_frame.grid_columnconfigure((0,1,2,3),weight=1)
         self.r_frame.grid_rowconfigure(1,weight=1)
         self.r_frame.grid(row=0,column=1,rowspan=4,padx=20,pady=20,sticky="nsew")
-        attendance = customtkinter.CTkLabel(master=self.r_frame,text="Project Database")
-        attendance.configure(padx=20,font=self.text_font_bold)
-        attendance.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
-        attendance_graph = customtkinter.CTkFrame(master=self.r_frame)
-        attendance_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
+        projct = customtkinter.CTkLabel(master=self.r_frame,text="Project Database")
+        projct.configure(padx=20,font=self.text_font_bold)
+        projct.grid(row=0,column=0,padx=7.5,pady=20,sticky="nw")
+        projct_graph = customtkinter.CTkFrame(master=self.r_frame)
+        projct_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
         y_coord = 60
-        customtkinter.CTkLabel(master=attendance_graph,text=f"Course\t:Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
-        for i in range(len(data["users"][self.username]["courses"])):
-            l=data["users"][self.username]["courses"]
-            course = l[i]
-            course_grade = data["users"][self.username]["grades"][course]
-            if course_grade!=None:
-                a = customtkinter.CTkLabel(master=attendance_graph,text=f"{course}\t:{course_grade}",font=self.text_font)
+        customtkinter.CTkLabel(master=projct_graph,text=f"Project\t\t\t:\t\t\tProject_Link",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
+        for i in range(len(data["users"]["projects"]["projects"])):
+            l=data["users"]["projects"]["projects"]
+            pro = l[i]
+            project_id = data["users"]["projects"]["projectsid"][pro]
+            if project_id!=None:
+                a = customtkinter.CTkLabel(master=projct_graph,text=f"{pro:<60}:{project_id:<60}",font=self.text_font)
                 a.place(x=50,y=y_coord)
                 y_coord+=40
                 
-        cummulative = customtkinter.CTkLabel(master=attendance_graph,text=f"Course Name    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
 
     def attendace(self):
         self.r_frame.destroy()

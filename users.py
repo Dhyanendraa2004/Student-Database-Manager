@@ -226,18 +226,19 @@ class Users:
         grad_graph = customtkinter.CTkFrame(master=self.r_frame,fg_color="#22448a")
         grad_graph.grid(row=1,column=0,padx=7.5,pady=20,sticky="nsew",columnspan=4) 
         y_coord = 60
-        customtkinter.CTkLabel(master=grad_graph,text=f"Course\t:Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
+        customtkinter.CTkLabel(master=grad_graph,text=f"Course \t    :                     \t Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
         for i in range(len(data["users"][self.username]["courses"])):
             l=data["users"][self.username]["courses"]
             course = l[i]
             course_grade = data["users"][self.username]["grades"][course]
             if course_grade!=None:
-                a = customtkinter.CTkLabel(master=grad_graph,text=f"{course} \t :{course_grade}",font=self.text_font)
+                s=course
+                a = customtkinter.CTkLabel(master=grad_graph,text=f"{s}",font=self.text_font)
+                b = customtkinter.CTkLabel(master=grad_graph,text=f":{course_grade}",font=self.text_font)
+                b.place(x=300,y=y_coord)
                 a.place(x=50,y=y_coord)
                 y_coord+=40
                 
-        cummulative = customtkinter.CTkLabel(master=grad_graph,text=f"Course Name    :    Grade",font=customtkinter.CTkFont("Proxima Nova Rg",18,'bold')).place(x=50,y=20)
-        
     #projects tab
     def projectsss(self):
         self.r_frame.destroy()

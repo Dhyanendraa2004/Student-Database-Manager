@@ -37,7 +37,7 @@ class Users:
         frame = customtkinter.CTkToplevel(self.window)
         frame.geometry("600x440")
         frame.title("Login")
-        bg_image = ImageTk.PhotoImage(Image.open("pattern.png"))
+        bg_image = ImageTk.PhotoImage(Image.open("pattern5.png"))
         bg = customtkinter.CTkLabel(master=frame,image=bg_image,text="")
         #pack used for organisation of the widgets
         bg.pack()

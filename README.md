@@ -29,18 +29,6 @@ To edit a user's semester courses (admin privilege), select a user from the user
 Attendance graphs for various courses can be viewed by selecting the desired course from the dropdown menu.
 To print an attendance sheet, go to the Attendance section and click on the "Print Sheet" button.
 
-##Contributing
-Contributions to the Student Database Management System are welcome and encouraged! If you'd like to contribute, please follow these steps:
-
-> Fork the repository.
-
-> Create a new branch.
-
-> Make your changes and enhancements.
-
-> Test your changes to ensure they work as expected.
-
-> Submit a pull request explaining your changes.
 
 
 

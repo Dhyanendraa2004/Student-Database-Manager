@@ -18,7 +18,6 @@ def total_attendace(data,current_user):
     total=0
     for i in a:
         total = total+i
-    #total_days = (datetime.date(datetime.datetime.now().year,datetime.datetime.now().month+1,1)-datetime.date(datetime.datetime.now().year,datetime.datetime.now().month,1)).days  
     total_days=28*l
     return round((total/total_days)*100,1)
 

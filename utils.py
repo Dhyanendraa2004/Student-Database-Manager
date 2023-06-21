@@ -182,7 +182,7 @@ def make_pdf(location,data,current_user,**kwargs):
     pdf.add_page()
     pdf.set_font("Times", size=10)
 
-    create_table(table_data = data,title='PAYSLIP      NAME: {}'.format(x), cell_width='even')
+    create_table(table_data = data,title='Student Report      NAME: {}'.format(x), cell_width='even')
     pdf.ln()
 
     # pdf.cell(94, 0, f'GROSS PAY :   {gross}',)

@@ -11,8 +11,8 @@ Attendance graphs for different courses, providing a visual representation of at
 Ability to print attendance sheets.
 
 ### Admin user privileges:
-Add new users to the system.
-Edit semester courses for existing users.
+Add/Remove new users to the system.
+Change the credits scored by each user.
 
 ## Prerequisites
 Before running the Student Database Management System, ensure you have the following prerequisites:

@@ -289,17 +289,17 @@
             "roll": 221010218,
             "semester": 2,
             "attendance": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+                21,
+                24,
+                22,
+                26,
+                24,
+                20,
+                18,
+                21,
+                22,
+                24,
+                19
             ],
             "credits": 205,
             "courses": [
@@ -321,17 +321,17 @@
             "isadmin": false,
             "result_record": [],
             "grades": {
-                "Calculus": "",
-                "Optimisation Tech": "",
-                "Quantum Mechanics": "",
-                "OOPs": "",
-                "Signal and Systems": "",
-                "AIML": "",
-                "CDS": "",
-                "Wealth and well being": "",
-                "IOT": "",
-                "DNP": "",
-                "3D Printing": ""
+                "Calculus": "A",
+                "Optimisation Tech": "A+",
+                "Quantum Mechanics": "A",
+                "OOPs": "A",
+                "Signal and Systems": "A",
+                "AIML": "A+",
+                "CDS": "B+",
+                "Wealth and well being": "B+",
+                "IOT": "A+",
+                "DNP": "A+",
+                "3D Printing": "A+"
             }
         },
         "Akshat": {

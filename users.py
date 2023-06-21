@@ -423,7 +423,7 @@ class Admin(Users):
 
             new_window.title("Confirm Changes")
             new_window.geometry("400x240")
-            new_window.protocol("WM_DELETE_WINDOW", lambda: ...)
+            new_window.protocol("WM_DELETE_WINDOW", lambda: new_window.destroy())
 
 
             new_window.resizable(width=False,height=False)

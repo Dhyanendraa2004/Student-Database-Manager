@@ -27,7 +27,7 @@ Use the navigation menu to navigate between different sections of the applicatio
 To add a new user (admin privilege), click on the "Create User" button and follow the prompts.
 To edit a user's semester courses (admin privilege), select a user from the user list and click on the "Edit Courses" button.
 Attendance graphs for various courses can be viewed by selecting the desired course from the dropdown menu.
-To print an attendance sheet, go to the Attendance section and click on the "Print Sheet" button.
+To print an Student Report, go to the Student Report section and select the folder to save the pdf of the report.
 
 
 
